@@ -1,10 +1,13 @@
 #include "BackingGrid.h"
 
-BackingGrid::BackingGrid(int height, int width, double cellSize)
+BackingGrid::BackingGrid() {}
+
+BackingGrid::BackingGrid(int height, int width, double r)
 {
 	this->height = height;
 	this->width = width;
-	this->cellSize = cellSize;
+	this->r = r;
+	this->cellSize = r/sqrt(2);
 
 	this->columns = (int)ceil(this->width / cellSize);
 	this->rows = (int)ceil(this->height / cellSize);
@@ -19,13 +22,38 @@ void BackingGrid::SetCell(int row, int col, int value)
 	cells[row + col * columns] = value;
 }
 
-int BackingGrid::GetCell(double x, double y)
+int BackingGrid::GetCellValue(double x, double y)
 {
-	if (x < 0 || x > height || y < 0 || y > width) {
-		throw std::range_error("GetCell");
+	if (x < 0 || x > height || y < 0 || y > width) 
+	{
+		throw std::range_error("GetCellValue");
 	}
+
 	int row = (int)floor(x / cellSize);
 	int col = (int)floor(y / cellSize);
 	return cells[row + col * columns];
-	return 0;
+}
+
+int BackingGrid::GetCellRow(double x, double y)
+{
+	if (x < 0 || x > height || y < 0 || y > width) {
+		throw std::range_error("GetCellRow");
+	}
+	return (int)floor(x / cellSize);
+}
+
+int BackingGrid::GetCellColumn(double x, double y)
+{
+	if (x < 0 || x > height || y < 0 || y > width) {
+		throw std::range_error("GetCellRow");
+	}
+	return (int)floor(y / cellSize);
+}
+
+bool BackingGrid::containsPoint(double x, double y)
+{
+	if (x > 0 || x <= height || y > 0 || y <= width) {
+		return true;
+	}
+	return false;
 }

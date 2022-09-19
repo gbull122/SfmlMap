@@ -1,7 +1,7 @@
 #pragma once
 
-struct Point
+struct IntPoint
 {
 	int x;
 	int y;
-};
+}; 

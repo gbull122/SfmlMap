@@ -133,7 +133,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackingGrid.h" />
-    <ClInclude Include="Point.h" />
+    <ClInclude Include="DbPoint.h" />
+    <ClInclude Include="IntPoint.h" />
     <ClInclude Include="PoissonSampler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

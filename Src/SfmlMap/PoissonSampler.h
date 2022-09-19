@@ -2,25 +2,29 @@
 #define POISSONSAMPLER_H
 
 #include <vector>
+#include <cmath>
 
-#include "Point.h"
+#include "DbPoint.h"
+#include "BackingGrid.h"
 
 class PoissonSampler
 {
 public:
-	PoissonSampler(int height, int width, double r, int k);
+	PoissonSampler(BackingGrid backingGrid, int k);
 
-	std::vector<Point> sample();
+	std::vector<DbPoint> sample();
 
 private:
 	int k;
 	double dx;
-	int height;
-	int width;
+	BackingGrid backingGrid;
 
 	double randomDouble(double min, double max);
 	int randomRange(int min, int max);
-	Point randomPoint();
+	DbPoint randomPoint();
+	DbPoint randomDiscPoint(DbPoint center);
+	bool findDiscPoint(DbPoint center, std::vector<DbPoint>& points, DbPoint* p);
+	bool isSampleValid(DbPoint& p, std::vector<DbPoint>& points);
 };
 
 #endif

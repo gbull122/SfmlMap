@@ -32,7 +32,10 @@
     <ClInclude Include="BackingGrid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Point.h">
+    <ClInclude Include="IntPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DbPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
